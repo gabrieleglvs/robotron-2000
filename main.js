@@ -1,20 +1,20 @@
-const subtrair = document.querySelector("#subtrair")
-const somar = document.querySelector("#somar")
-const braco = document.querySelector("#braco")
+const peca = document.querySelector("#braco")
 
 const controle = document.querySelectorAll(".controle-ajuste")
 console.log(controle)
 
 controle.forEach((elemento) => {
     elemento.addEventListener("click", (e) => {
-        manipulaDados(e.target.textContent);
+        manipulaDados(e.target.textContent, e.target.parentNode); //pego o texto e o elemento (controle) de onde veio aquele click (ex: braços, blindagem, núcleos...)
     })
 })
 
-function manipulaDados(operacao) {
+function manipulaDados(operacao, controle) {
+    const peca = controle.querySelector(".controle-contador")
+
     if(operacao === '-') {
-        braco.value = parseInt(braco.value) - 1;
+        peca.value = parseInt(peca.value) - 1;
     } else {
-        braco.value = parseInt(braco.value) + 1;
+        peca.value = parseInt(peca.value) + 1;
     }
 }
